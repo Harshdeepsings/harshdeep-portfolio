@@ -1,0 +1,797 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Harshdeep Singh • Portfolio</title>
+    <meta
+      name="description"
+      content="Portfolio of Harshdeep Singh – B.Tech Blockchain student skilled in C++, Python, HTML, CSS, JavaScript. Projects, skills, and contact."
+    />
+    <meta name="theme-color" content="#0ea5e9" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --bg: #0b0e14; /* dark */
+        --card: #0f1420;
+        --text: #e6edf3;
+        --muted: #9fb0c0;
+        --brand: #0ea5e9; /* sky-500 */
+        --brand-2: #22d3ee; /* cyan-400 */
+        --ring: rgba(34, 211, 238, 0.4);
+        --shadow: 0 10px 30px rgba(2, 8, 23, 0.35);
+        --radius: 18px;
+      }
+      :root.light {
+        --bg: #f8fafc; /* slate-50 */
+        --card: #ffffff;
+        --text: #0b1220;
+        --muted: #475569;
+        --brand: #0284c7; /* sky-600 */
+        --brand-2: #0891b2; /* cyan-700 */
+        --ring: rgba(14, 165, 233, 0.25);
+        --shadow: 0 10px 30px rgba(2, 8, 23, 0.08);
+      }
+      * {
+        box-sizing: border-box;
+      }
+      html,
+      body {
+        height: 100%;
+      }
+      body {
+        margin: 0;
+        font-family: Inter, system-ui, Segoe UI, Roboto, Helvetica, Arial,
+          sans-serif;
+        background: radial-gradient(
+            1200px 800px at 90% -10%,
+            rgba(34, 211, 238, 0.15),
+            transparent 60%
+          ),
+          radial-gradient(
+            1200px 800px at 0% 100%,
+            rgba(14, 165, 233, 0.15),
+            transparent 60%
+          ),
+          var(--bg);
+        color: var(--text);
+        line-height: 1.6;
+        scroll-behavior: smooth;
+      }
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+      .container {
+        max-width: 1080px;
+        margin: 0 auto;
+        padding: 0 20px;
+      }
+      header {
+        position: sticky;
+        top: 0;
+        z-index: 50;
+        backdrop-filter: saturate(180%) blur(10px);
+        background: color-mix(in srgb, var(--bg) 80%, transparent);
+        border-bottom: 1px solid
+          color-mix(in srgb, var(--muted) 20%, transparent);
+      }
+      .nav {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 16px 0;
+      }
+      .logo {
+        font-weight: 800;
+        letter-spacing: 0.5px;
+      }
+      .logo b {
+        background: linear-gradient(90deg, var(--brand), var(--brand-2));
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+      }
+      .nav a {
+        font-weight: 600;
+        opacity: 0.9;
+      }
+      .navlinks {
+        display: flex;
+        gap: 18px;
+        align-items: center;
+      }
+      .btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        background: linear-gradient(135deg, var(--brand), var(--brand-2));
+        color: white;
+        padding: 12px 16px;
+        border-radius: 14px;
+        box-shadow: var(--shadow);
+        border: 0;
+        cursor: pointer;
+      }
+      .btn.outline {
+        background: transparent;
+        color: var(--text);
+        border: 1px solid color-mix(in srgb, var(--text) 22%, transparent);
+      }
+      .btn.small {
+        padding: 8px 12px;
+        border-radius: 12px;
+      }
+      .btn:focus {
+        outline: 3px solid var(--ring);
+      }
+      .toggle {
+        width: 44px;
+        height: 28px;
+        border-radius: 999px;
+        border: 1px solid color-mix(in srgb, var(--muted) 35%, transparent);
+        display: flex;
+        align-items: center;
+        padding: 2px;
+        position: relative;
+      }
+      .dot {
+        width: 22px;
+        height: 22px;
+        border-radius: 999px;
+        background: linear-gradient(180deg, var(--card), #0000);
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+        transform: translateX(0);
+        transition: transform 0.25s;
+      }
+      :root.light .dot {
+        transform: translateX(16px);
+      }
+
+      /* Hero */
+      .hero {
+        padding: 80px 0;
+      }
+      .hero-inner {
+        display: grid;
+        grid-template-columns: 1.2fr 0.8fr;
+        gap: 28px;
+        align-items: center;
+      }
+      .badge {
+        display: inline-flex;
+        gap: 8px;
+        align-items: center;
+        padding: 6px 10px;
+        border-radius: 999px;
+        border: 1px solid color-mix(in srgb, var(--muted) 35%, transparent);
+        color: var(--muted);
+        font-weight: 600;
+        background: color-mix(in srgb, var(--bg) 70%, transparent);
+      }
+      .title {
+        font-size: clamp(28px, 5vw, 56px);
+        line-height: 1.1;
+        margin: 14px 0;
+      }
+      .subtitle {
+        color: var(--muted);
+      }
+      .card {
+        background: linear-gradient(
+          180deg,
+          color-mix(in srgb, var(--card) 90%, transparent),
+          color-mix(in srgb, var(--card) 100%, transparent)
+        );
+        border: 1px solid color-mix(in srgb, var(--muted) 25%, transparent);
+        border-radius: var(--radius);
+        box-shadow: var(--shadow);
+      }
+      .hero .actions {
+        display: flex;
+        gap: 12px;
+        margin-top: 22px;
+        flex-wrap: wrap;
+      }
+      .glass {
+        background: linear-gradient(
+          180deg,
+          color-mix(in srgb, var(--card) 70%, transparent),
+          color-mix(in srgb, var(--card) 92%, transparent)
+        );
+        border: 1px solid color-mix(in srgb, var(--muted) 25%, transparent);
+        border-radius: var(--radius);
+      }
+      .hero-visual {
+        aspect-ratio: 1/1;
+        padding: 22px;
+        display: grid;
+        place-items: center;
+      }
+      .ring {
+        position: relative;
+        width: min(420px, 90%);
+        aspect-ratio: 1/1;
+        border-radius: 999px;
+        background: radial-gradient(
+            closest-side,
+            color-mix(in srgb, var(--brand) 25%, transparent),
+            transparent
+          ),
+          conic-gradient(from 220deg, var(--brand), var(--brand-2));
+        filter: hue-rotate(-12deg) saturate(120%);
+        opacity: 0.9;
+      }
+      .ring::after {
+        content: "";
+        position: absolute;
+        inset: 10%;
+        border-radius: inherit;
+        background: var(--bg);
+      }
+      .ring-label {
+        position: absolute;
+        inset: 0;
+        display: grid;
+        place-items: center;
+        text-align: center;
+        padding: 20px;
+      }
+
+      /* Sections */
+      section {
+        padding: 70px 0;
+      }
+      .section-title {
+        font-size: 28px;
+        margin-bottom: 18px;
+      }
+      .section-sub {
+        color: var(--muted);
+        margin-top: -6px;
+        margin-bottom: 22px;
+      }
+
+      /* Skills */
+      .skills {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 14px;
+      }
+      .skill {
+        padding: 14px 16px;
+        border-radius: 14px;
+        border: 1px solid color-mix(in srgb, var(--muted) 25%, transparent);
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+      .chips {
+        display: flex;
+        gap: 10px;
+        flex-wrap: wrap;
+      }
+      .chip {
+        padding: 6px 10px;
+        border-radius: 999px;
+        background: color-mix(in srgb, var(--card) 70%, transparent);
+        border: 1px solid color-mix(in srgb, var(--muted) 28%, transparent);
+        font-weight: 600;
+        color: var(--muted);
+      }
+
+      /* Projects */
+      .grid {
+        display: grid;
+        grid-template-columns: repeat(12, 1fr);
+        gap: 18px;
+      }
+      .col-6 {
+        grid-column: span 6;
+      }
+      .col-12 {
+        grid-column: span 12;
+      }
+      .project {
+        overflow: hidden;
+        position: relative;
+      }
+      .thumb {
+        aspect-ratio: 16/9;
+        background: linear-gradient(
+          135deg,
+          color-mix(in srgb, var(--brand) 35%, transparent),
+          color-mix(in srgb, var(--brand-2) 35%, transparent)
+        );
+        display: grid;
+        place-items: center;
+        font-weight: 800;
+        letter-spacing: 0.08em;
+      }
+      .project .body {
+        padding: 16px;
+      }
+      .tag {
+        display: inline-block;
+        font-size: 12px;
+        color: var(--muted);
+        border: 1px solid color-mix(in srgb, var(--muted) 30%, transparent);
+        padding: 4px 8px;
+        border-radius: 999px;
+      }
+
+      /* Resume */
+      .resume {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 14px;
+        align-items: center;
+      }
+
+      /* Contact */
+      form {
+        display: grid;
+        gap: 12px;
+        max-width: 560px;
+      }
+      label {
+        font-weight: 600;
+      }
+      input,
+      textarea {
+        width: 100%;
+        padding: 12px 14px;
+        border-radius: 12px;
+        border: 1px solid color-mix(in srgb, var(--muted) 25%, transparent);
+        background: color-mix(in srgb, var(--card) 92%, transparent);
+        color: var(--text);
+      }
+      input:focus,
+      textarea:focus {
+        outline: 3px solid var(--ring);
+        border-color: transparent;
+      }
+
+      /* Footer */
+      footer {
+        padding: 30px 0 60px;
+        color: var(--muted);
+        border-top: 1px solid color-mix(in srgb, var(--muted) 20%, transparent);
+      }
+
+      /* Responsive */
+      @media (max-width: 900px) {
+        .hero-inner {
+          grid-template-columns: 1fr;
+        }
+        .skills {
+          grid-template-columns: 1fr;
+        }
+        .col-6 {
+          grid-column: span 12;
+        }
+      }
+    </style>
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Harshdeep Singh",
+        "jobTitle": "B.Tech Blockchain Student",
+        "sameAs": [
+          "https://github.com/your-github",
+          "https://www.linkedin.com/in/your-linkedin"
+        ],
+        "knowsAbout": [
+          "Blockchain",
+          "C++",
+          "Python",
+          "JavaScript",
+          "Web Development"
+        ],
+        "url": "https://your-portfolio.example"
+      }
+    </script>
+  </head>
+  <body>
+    <header>
+      <div class="container nav">
+        <a class="logo" href="#home" aria-label="Home"><b>HS</b> • Portfolio</a>
+        <nav class="navlinks" aria-label="Primary">
+          <a href="#about">About</a>
+          <a href="#skills">Skills</a>
+          <a href="#projects">Projects</a>
+          <a href="#resume">Resume</a>
+          <a href="#contact">Contact</a>
+          <button
+            id="themeBtn"
+            class="btn small outline"
+            aria-label="Toggle theme"
+          >
+            <span class="toggle" aria-hidden="true"
+              ><span class="dot"></span
+            ></span>
+            <span style="font-weight: 700">Theme</span>
+          </button>
+        </nav>
+      </div>
+    </header>
+
+    <main id="home" class="hero container">
+      <div class="hero-inner">
+        <div>
+          <span class="badge">👋 Hi, I’m Harshdeep Singh</span>
+          <h1 class="title">
+            B.Tech <span style="color: var(--brand)">Blockchain</span> student
+            building with
+            <span style="color: var(--brand-2)">C++, Python & the Web</span>.
+          </h1>
+          <p class="subtitle">
+            I love solving real-world problems and turning ideas into clean,
+            usable products. Recently, I worked on a
+            <strong>Restaurant Recommendation System</strong>.
+          </p>
+          <div class="actions">
+            <a class="btn" href="#projects">View Projects</a>
+            <a class="btn outline" href="#contact">Contact Me</a>
+            <a class="btn outline" href="resume.pdf" download
+              >Download Resume</a
+            >
+          </div>
+        </div>
+        <div class="card hero-visual">
+          <div class="ring">
+            <div class="ring-label">
+              <div>
+                <div
+                  style="
+                    font-weight: 800;
+                    font-size: 22px;
+                    letter-spacing: 0.02em;
+                  "
+                >
+                  Blockchain • ML • Web
+                </div>
+                <div class="subtitle">
+                  C++ · Python · HTML · CSS · JavaScript
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <section id="about">
+      <div class="container">
+        <h2 class="section-title">About Me</h2>
+        <p class="section-sub">
+          Quick snapshot of who I am and what I’m aiming for.
+        </p>
+        <div class="card" style="padding: 20px">
+          <p>
+            I’m a B.Tech student specializing in <strong>Blockchain</strong>,
+            with a strong foundation in <strong>C++</strong>,
+            <strong>Python</strong>, <strong>HTML</strong>,
+            <strong>CSS</strong>, and <strong>JavaScript</strong>. I enjoy
+            learning by building: from backend logic in Python/C++ to clean,
+            accessible UIs on the web.
+          </p>
+          <p>
+            I’m actively seeking <strong>internships</strong> and
+            <strong>collaborations</strong> where I can contribute to meaningful
+            projects—especially ones involving blockchain, data, or developer
+            tooling.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section id="skills">
+      <div class="container">
+        <h2 class="section-title">Skills</h2>
+        <p class="section-sub">Technologies I use and enjoy.</p>
+        <div class="skills">
+          <div class="skill glass">
+            <strong>Languages</strong>
+            <div class="chips">
+              <span class="chip">C++</span>
+              <span class="chip">Python</span>
+              <span class="chip">JavaScript</span>
+            </div>
+          </div>
+          <div class="skill glass">
+            <strong>Web</strong>
+            <div class="chips">
+              <span class="chip">HTML</span>
+              <span class="chip">CSS</span>
+              <span class="chip">REST</span>
+            </div>
+          </div>
+          <div class="skill glass">
+            <strong>Blockchain</strong>
+            <div class="chips">
+              <span class="chip">Fundamentals</span>
+              <span class="chip">Smart Contracts (learning)</span>
+            </div>
+          </div>
+          <div class="skill glass">
+            <strong>Tools</strong>
+            <div class="chips">
+              <span class="chip">Git / GitHub</span>
+              <span class="chip">VS Code</span>
+              <span class="chip">Linux</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="projects">
+      <div class="container">
+        <h2 class="section-title">Projects</h2>
+        <p class="section-sub">A few things I’ve built or contributed to.</p>
+        <div class="grid">
+          <article class="project card col-12">
+            <div class="thumb">🍽️ Restaurant Recommendation System</div>
+            <div class="body">
+              <div
+                style="
+                  display: flex;
+                  gap: 8px;
+                  align-items: center;
+                  justify-content: space-between;
+                  flex-wrap: wrap;
+                "
+              >
+                <h3 style="margin: 0">Restaurant Recommendation System</h3>
+                <span class="tag">Python · ML · Web</span>
+              </div>
+              <p>
+                A system that suggests restaurants to users based on preferences
+                and historical ratings. Implemented data preprocessing,
+                similarity metrics, and a simple web interface for search &
+                results.
+              </p>
+              <ul>
+                <li>
+                  Cleaned dataset, engineered features; tried cosine similarity
+                  and KNN-based approaches.
+                </li>
+                <li>
+                  Built a minimal Flask front-end for querying recommendations.
+                </li>
+                <li>
+                  Focused on explainability: show <em>why</em> an item is
+                  recommended.
+                </li>
+              </ul>
+              <div class="actions" style="margin-top: 8px">
+                <a
+                  class="btn"
+                  href="https://github.com/your-github/restaurant-recommender"
+                  target="_blank"
+                  rel="noopener"
+                  >GitHub Repo</a
+                >
+                <a
+                  class="btn outline"
+                  href="#"
+                  aria-disabled="true"
+                  title="Add your live demo link"
+                  >Live Demo</a
+                >
+              </div>
+            </div>
+          </article>
+
+          <article class="project card col-6">
+            <div class="thumb">🔐 Mini Wallet UI (Concept)</div>
+            <div class="body">
+              <div
+                style="
+                  display: flex;
+                  gap: 8px;
+                  align-items: center;
+                  justify-content: space-between;
+                  flex-wrap: wrap;
+                "
+              >
+                <h3 style="margin: 0">Blockchain Wallet Concept</h3>
+                <span class="tag">Blockchain · UI</span>
+              </div>
+              <p>
+                Lightweight concept for a non-custodial wallet UI. Focus on
+                clean signing flow and human-readable transactions.
+              </p>
+              <div class="actions">
+                <a class="btn outline" href="#" aria-disabled="true"
+                  >Case Study Soon</a
+                >
+              </div>
+            </div>
+          </article>
+
+          <article class="project card col-6">
+            <div class="thumb">🧠 DSA Snippets</div>
+            <div class="body">
+              <div
+                style="
+                  display: flex;
+                  gap: 8px;
+                  align-items: center;
+                  justify-content: space-between;
+                  flex-wrap: wrap;
+                "
+              >
+                <h3 style="margin: 0">C++ / Python Snippets</h3>
+                <span class="tag">C++ · Python</span>
+              </div>
+              <p>
+                A curated set of reusable algorithms and utilities I reach for
+                during contests/interviews.
+              </p>
+              <div class="actions">
+                <a
+                  class="btn outline"
+                  href="https://github.com/your-github/snippets"
+                  target="_blank"
+                  rel="noopener"
+                  >View Snippets</a
+                >
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="resume">
+      <div class="container">
+        <h2 class="section-title">Resume & Achievements</h2>
+        <p class="section-sub">Highlights and downloadable resume.</p>
+        <div class="card" style="padding: 20px">
+          <div class="resume">
+            <ul style="margin: 0 0 8px 18px">
+              <li>Hackathon participation & team projects (add details).</li>
+              <li>
+                Coursework: Data Structures, DBMS, Operating Systems, Blockchain
+                Basics.
+              </li>
+              <li>
+                Certificates: (add Coursera/Udemy/college certifications if
+                any).
+              </li>
+            </ul>
+            <a class="btn" href="resume.pdf" download>Download Resume</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="container">
+        <h2 class="section-title">Contact</h2>
+        <p class="section-sub">Let’s build something together.</p>
+        <div class="grid">
+          <div class="col-6">
+            <form action="https://formspree.io/f/your-id" method="POST">
+              <div>
+                <label for="name">Name</label>
+                <input
+                  id="name"
+                  name="name"
+                  type="text"
+                  placeholder="Your name"
+                  required
+                />
+              </div>
+              <div>
+                <label for="email">Email</label>
+                <input
+                  id="email"
+                  name="email"
+                  type="email"
+                  placeholder="yourmail@example.com"
+                  required
+                />
+              </div>
+              <div>
+                <label for="message">Message</label>
+                <textarea
+                  id="message"
+                  name="message"
+                  rows="5"
+                  placeholder="Tell me about your project..."
+                  required
+                ></textarea>
+              </div>
+              <button class="btn" type="submit">Send Message</button>
+            </form>
+          </div>
+          <div class="col-6">
+            <div class="card" style="padding: 18px">
+              <p>
+                <strong>Email:</strong>
+                <a href="mailto:yourmail@example.com">harshdeepsingss911@gmail.com</a>
+              </p>
+              <p>
+                <strong>GitHub:</strong>
+                <a
+                  href="https://github.com/your-github"
+                  target="_blank"
+                  rel="noopener"
+                  >github.com/your-github</a
+                >
+              </p>
+              <p>
+                <strong>LinkedIn:</strong>
+                <a
+                  href="https://www.linkedin.com/in/your-linkedin"
+                  target="_blank"
+                  rel="noopener"
+                  >linkedin.com/in/your-linkedin</a
+                >
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <div
+        class="container"
+        style="
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          gap: 10px;
+          flex-wrap: wrap;
+        "
+      >
+        <div>
+          © <span id="year"></span> Harshdeep Singh. All rights reserved.
+        </div>
+        <div style="display: flex; gap: 10px; align-items: center">
+          <a class="tag" href="#home">Back to top ↑</a>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      // Theme persistence
+      const root = document.documentElement;
+      const saved = localStorage.getItem("theme");
+      if (saved === "light") root.classList.add("light");
+
+      document.getElementById("themeBtn").addEventListener("click", () => {
+        root.classList.toggle("light");
+        localStorage.setItem(
+          "theme",
+          root.classList.contains("light") ? "light" : "dark"
+        );
+      });
+
+      // Dynamic year
+      document.getElementById("year").textContent = new Date().getFullYear();
+
+      // Accessible smooth skip to sections (already via CSS scroll-behavior)
+      document.querySelectorAll('a[href^="#"]').forEach((a) => {
+        a.addEventListener("click", (e) => {
+          const id = a.getAttribute("href").slice(1);
+          const el = document.getElementById(id);
+          if (el) {
+            e.preventDefault();
+            el.scrollIntoView({ behavior: "smooth", block: "start" });
+          }
+        });
+      });
+    </script>
+  </body>
+</html>
